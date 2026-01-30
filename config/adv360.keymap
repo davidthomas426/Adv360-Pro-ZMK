@@ -4,6 +4,9 @@
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/stp.h>
 #include <dt-bindings/zmk/backlight.h>
+
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
 #include <dt-bindings/zmk/pointing.h>
 
 /*
@@ -27,13 +30,20 @@
       #include "version.dtsi"
 
       hm: homerow_mods {
-          compatible = "zmk,behavior-hold-tap";
-          label = "HOMEROW_MODS";
-          #binding-cells = <2>;
-          tapping-term-ms = <200>;
-          quick_tap_ms = <175>;
-          flavor = "tap-preferred";
-          bindings = <&kp>, <&kp>;
+        compatible = "zmk,behavior-hold-tap";
+        label = "HOMEROW_MODS";
+        #binding-cells = <2>;
+        tapping-term-ms = <200>;
+        quick_tap_ms = <175>;
+        flavor = "tap-preferred";
+        bindings = <&kp>, <&kp>;
+      };
+
+
+      &lt {
+        flavor = "balanced"
+        tapping-term-ms = <175>; // This is the value already set by default
+        quick-tap-ms = <125>;
       };
 
       hml: home_row_mod_left {
@@ -67,11 +77,11 @@
     default_layer {
       display-name = "Base";
       bindings = <
-        &kp EQUAL &kp N1      &kp N2   &kp N3   &kp N4     &kp N5 &tog 1                                                             &mo 3      &kp N6 &kp N7 &kp N8    &kp N9   &kp N0   &kp MINUS
-        &kp TAB   &kp Q       &kp W    &kp E    &kp R      &kp T  &none                                                              &none      &kp Y  &kp U  &kp I     &kp O    &kp P    &kp BSLH
-        &kp ESC   &kp A       &kp S    &kp D    &kp F      &kp G  &tog 4          &kp LCTRL &kp LALT &kp LGUI  &kp RCTRL             &kp RSHIFT &kp H  &kp J  &kp K     &kp L    &kp SEMI &kp SQT
-        &kp LSHFT &kp Z       &kp X    &kp C    &kp V      &kp B                            &kp HOME &hmr RALT PG_UP                            &kp N  &kp M  &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
-        &mo 2     &lt 1 GRAVE &kp CAPS &kp LEFT &kp RIGHT                &kp BSPC &lt 4 DEL &kp END  &kp PG_DN &kp ENTER &lt 5 SPACE                   &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
+        &kp EQUAL &kp N1      &kp N2        &kp N3   &kp N4     &kp N5 &tog 1                                                               &mo 3      &kp N6 &kp N7 &kp N8    &kp N9   &kp N0   &kp MINUS
+        &kp TAB   &kp Q       &kp W         &kp E    &kp R      &kp T  &none                                                                &none      &kp Y  &kp U  &kp I     &kp O    &kp P    &kp BSLH
+        &kp ESC   &kp A       &kp S         &kp D    &kp F      &kp G  &tog 4          &kp LCTRL &kp LALT   &kp LGUI  &kp RCTRL             &kp RSHIFT &kp H  &kp J  &kp K     &kp L    &kp SEMI &kp SQT
+        &kp LSHFT &kp Z       &kp X         &kp C    &kp V      &kp B                            &kp HOME   &hmr RALT PG_UP                            &kp N  &kp M  &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
+        &mo 2     &lt 1 GRAVE &mt LGUI CAPS &kp LEFT &kp RIGHT                &kp BSPC &lt 4 DEL &lt 5 END  &kp PG_DN &kp ENTER &lt 5 SPACE                   &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
       >;
     };
     keypad {
@@ -88,8 +98,8 @@
       display-name = "Fn";
       bindings = <
         &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &trans                                           &trans &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12
-        &trans &trans &trans &trans &trans &trans &trans                                           &trans &trans &trans &trans &trans  &trans  &trans
-        &trans &trans &trans &trans &trans &trans &trans        &trans &trans &trans &trans        &trans &trans &trans &trans &trans  &trans  &trans
+        &trans &trans &trans &trans &trans &trans  &none                                           &none  &trans &trans &trans &trans  &trans  &trans
+        &trans &trans &trans &trans &trans &trans  &none        &trans &trans &trans &trans        &none  &trans &trans &trans &trans  &trans  &trans
         &trans &trans &trans &trans &trans &trans                      &trans &trans                      &trans &trans &trans &trans  &trans  &trans
         &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans               &trans &trans &trans  &trans  &trans
       >;
@@ -108,22 +118,22 @@
     extra1 { 
       display-name = "Mouse";
       bindings = <
-        &trans &trans &trans &trans         &trans          &trans &trans                                           &trans &trans    &trans       &trans         &trans    &trans &trans
-        &trans &trans &trans &trans         &trans          &trans  &none                                           &none  &trans    &trans       &trans         &mkp RCLK &trans &trans
-        &trans &trans &trans &mmv MOVE_DOWN &mmv MOVE_UP    &trans  &none        &trans &trans &trans &trans        &none  &kp PG_UP &kp DOWN     &kp UP         &mkp LCLK &trans &trans
-        &trans &trans &trans &mmv MOVE_LEFT &mmv MOVE_RIGHT &trans                      &trans &trans                      &kp PG_DN &kp LEFT     &kp RIGHT      &trans    &trans &trans
-        &trans &trans &trans &trans         &trans                        &trans &trans &trans &trans &trans &trans                  &msc SCRL_UP &msc SCRL_DOWN &trans    &trans &trans
+        &trans &trans &trans &trans &trans &trans &trans                                           &trans &trans    &trans         &trans         &trans          &trans &trans
+        &trans &trans &trans &trans &trans &trans &trans                                           &trans &trans    &msc SCRL_UP   &msc SCRL_DOWN &mkp MCLK       &trans &trans
+        &trans &trans &trans &trans &trans &trans &trans        &trans &trans &trans &trans        &trans &kp PG_UP &mkp LCLK      &mmv MOVE_UP   &mkp RCLK       &trans &trans
+        &trans &trans &trans &trans &trans &trans                      &trans &trans                      &kp PG_DN &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &trans &trans
+        &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans                  &trans         &trans         &trans          &trans &trans
       >;
     };
 
     extra2 { 
       display-name = "Ergo";
       bindings = <
-        &trans &trans &trans &trans             &trans              &trans &trans                                           &trans &trans &trans     &trans    &trans     &trans &trans
-        &trans &trans &trans &trans             &trans              &trans &trans                                           &trans &trans &trans     &trans    &trans     &trans &trans
-        &trans &trans &trans &trans             &trans              &trans &trans        &trans &trans &trans &trans        &trans &trans &kp P      &kp MINUS &kp RSHIFT &trans &trans
-        &trans &trans &trans &trans             &trans              &trans                      &trans &trans                      &trans &kp SQT    &kp BSLH  &kp RSHIFT &trans &trans
-        &trans &trans &trans &kp LG(LA(LEFT)) &kp LG(LA(RIGHT))                   &trans &trans &trans &trans &trans &trans               &kp RSHIFT &kp LGUI  &kp RALT   &trans &trans
+        &trans &trans &trans &trans &trans &trans &trans                                           &trans &trans    &trans    &trans    &trans     &trans  &trans
+        &trans &trans &trans &trans &trans &trans &trans                                           &trans &trans    &kp MINUS &kp LGUI  &kb MINUS  &trans  &trans
+        &trans &trans &trans &trans &trans &trans &trans        &trans &trans &trans &trans        &trans &trans    &kp P     &kp MINUS &kp RSHIFT &trans  &trans
+        &trans &trans &trans &trans &trans &trans                      &trans &trans                      &kb SPACE &kp SQT   &kp BSLH  &kp RSHIFT &trans  &trans
+        &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans                  &kp SPACW &kp LGUI  &kp RALT   &trans  &trans
       >;
     };
 
