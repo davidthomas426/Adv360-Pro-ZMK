@@ -36,21 +36,6 @@
 
 / {
 
-    // Override properties for mouse movement and scrolling
-    &mmv {
-      x-input-code = <INPUT_REL_X>;
-      y-input-code = <INPUT_REL_Y>;
-      time-to-max-speed-ms = <400>;
-      acceleration-exponent = <12>;
-    };
-
-    &msc {
-      x-input-code = <INPUT_REL_HWHEEL>;
-      y-input-code = <INPUT_REL_WHEEL>;
-      time-to-max-speed-ms = <400>;
-      acceleration-exponent = <10>;
-    };
-
 
     behaviors {
       #include "macros.dtsi"
@@ -72,6 +57,28 @@
         tapping-term-ms = <175>; // This is the value already set by default
         quick-tap-ms = <125>;
       };
+
+      // Override properties for mouse movement and scrolling
+      my_mmv: my_mouse_move {
+        compatible = "zmk,behavior-input-two-axis";
+        #binding-cells = <1>;
+
+        x-input-code = <INPUT_REL_X>;
+        y-input-code = <INPUT_REL_Y>;
+        time-to-max-speed-ms = <400>;
+        acceleration-exponent = <12>;
+      };
+
+      my_msc: my_mouse_scroll {
+        compatible = "zmk,behavior-input-two-axis";
+        #binding-cells = <1>;
+
+        x-input-code = <INPUT_REL_HWHEEL>;
+        y-input-code = <INPUT_REL_WHEEL>;
+        time-to-max-speed-ms = <400>;
+        acceleration-exponent = <10>;
+      };
+
 
       hml: home_row_mod_left {
         compatible = "zmk,behavior-hold-tap";
@@ -145,11 +152,11 @@
     extra1 { 
       display-name = "Mouse";
       bindings = <
-        &trans &trans &trans &trans &trans &trans &trans                                           &trans &trans    &trans          &trans           &trans           &trans &trans
-        &trans &trans &trans &trans &trans &trans &trans                                           &trans &trans    &msc SCROLL_UP  &msc SCROLL_DOWN &mkp MCLK        &trans &trans
-        &trans &trans &trans &trans &trans &trans &trans        &trans &trans &trans &trans        &trans &kp PG_UP &mkp LCLK       &mmv MOUSE_UP    &mkp RCLK        &trans &trans
-        &trans &trans &trans &trans &trans &trans                      &trans &trans                      &kp PG_DN &mmv MOUSE_LEFT &mmv MOUSE_DOWN  &mmv MOUSE_RIGHT &trans &trans
-        &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans                  &trans          &trans           &trans           &trans &trans
+        &trans &trans &trans &trans &trans &trans &trans                                           &trans &trans    &trans             &trans              &trans              &trans &trans
+        &trans &trans &trans &trans &trans &trans &trans                                           &trans &trans    &my_msc SCROLL_UP  &my_msc SCROLL_DOWN &mkp MCLK           &trans &trans
+        &trans &trans &trans &trans &trans &trans &trans        &trans &trans &trans &trans        &trans &kp PG_UP &mkp LCLK          &my_mmv MOUSE_UP    &mkp RCLK           &trans &trans
+        &trans &trans &trans &trans &trans &trans                      &trans &trans                      &kp PG_DN &my_mmv MOUSE_LEFT &my_mmv MOUSE_DOWN  &my_mmv MOUSE_RIGHT &trans &trans
+        &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans                  &trans             &trans              &trans              &trans &trans
       >;
     };
 
