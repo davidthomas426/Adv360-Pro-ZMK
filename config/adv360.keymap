@@ -88,8 +88,8 @@
       display-name = "Fn";
       bindings = <
         &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &trans                                           &trans &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12
-        &trans &trans &trans &trans &trans &trans  &none                                           &none  &trans &trans &trans &trans  &trans  &trans
-        &trans &trans &trans &trans &trans &trans  &none        &trans &trans &trans &trans        &none  &trans &trans &trans &trans  &trans  &trans
+        &trans &trans &trans &trans &trans &trans &trans                                           &trans &trans &trans &trans &trans  &trans  &trans
+        &trans &trans &trans &trans &trans &trans &trans        &trans &trans &trans &trans        &trans &trans &trans &trans &trans  &trans  &trans
         &trans &trans &trans &trans &trans &trans                      &trans &trans                      &trans &trans &trans &trans  &trans  &trans
         &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans               &trans &trans &trans  &trans  &trans
       >;
@@ -120,10 +120,10 @@
       display-name = "Ergo";
       bindings = <
         &trans &trans &trans &trans             &trans              &trans &trans                                           &trans &trans &trans     &trans    &trans     &trans &trans
-        &trans &trans &trans &trans             &trans              &trans  &none                                           &none  &trans &trans     &trans    &trans     &trans &trans
-        &trans &trans &trans &trans             &trans              &trans  &none        &trans &trans &trans &trans        &none  &trans &kp P      &kp MINUS &kp RSHIFT &trans &trans
+        &trans &trans &trans &trans             &trans              &trans &trans                                           &trans &trans &trans     &trans    &trans     &trans &trans
+        &trans &trans &trans &trans             &trans              &trans &trans        &trans &trans &trans &trans        &trans &trans &kp P      &kp MINUS &kp RSHIFT &trans &trans
         &trans &trans &trans &trans             &trans              &trans                      &trans &trans                      &trans &kp SQT    &kp BSLH  &kp RSHIFT &trans &trans
-        &trans &trans &trans &kp LCMD(LA(LEFT)) &kp LCMD(LA(RIGHT))               &trans &trans &trans &trans &trans &trans               &kp RSHIFT &kp LGUI  &kp RALT   &trans &trans
+        &trans &trans &trans &kp LG(LA(LEFT)) &kp LG(LA(RIGHT))                   &trans &trans &trans &trans &trans &trans               &kp RSHIFT &kp LGUI  &kp RALT   &trans &trans
       >;
     };
 
