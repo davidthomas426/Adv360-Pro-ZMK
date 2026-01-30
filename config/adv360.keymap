@@ -148,9 +148,9 @@
       display-name = "Ergo";
       bindings = <
         &trans &trans &trans &trans &trans &trans &trans                                           &trans &trans    &trans    &trans    &trans     &trans  &trans
-        &trans &trans &trans &trans &trans &trans &trans                                           &trans &trans    &kp MINUS &kp LGUI  &kb MINUS  &trans  &trans
+        &trans &trans &trans &trans &trans &trans &trans                                           &trans &trans    &kp MINUS &kp LGUI  &kp MINUS  &trans  &trans
         &trans &trans &trans &trans &trans &trans &trans        &trans &trans &trans &trans        &trans &trans    &kp P     &kp MINUS &kp RSHIFT &trans  &trans
-        &trans &trans &trans &trans &trans &trans                      &trans &trans                      &kb SPACE &kp SQT   &kp BSLH  &kp RSHIFT &trans  &trans
+        &trans &trans &trans &trans &trans &trans                      &trans &trans                      &kp SPACE &kp SQT   &kp BSLH  &kp RSHIFT &trans  &trans
         &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans                  &kp SPACE &kp LGUI  &kp RALT   &trans  &trans
       >;
     };
