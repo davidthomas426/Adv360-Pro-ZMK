@@ -37,7 +37,7 @@
 / {
 
     &lt {
-      flavor = "balanced"
+      flavor = "balanced";
       tapping-term-ms = <175>; // This is the value already set by default
       quick-tap-ms = <125>;
     };
