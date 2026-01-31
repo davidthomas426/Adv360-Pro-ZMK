@@ -1,5 +1,5 @@
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1400  // default: 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1250  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 15    // default: 10
 
 #include <input/processors.dtsi>
 
@@ -44,7 +44,7 @@
 
 // Override properties for mouse movement and scrolling
 &mmv {
-  time-to-max-speed-ms = <500>;
+  time-to-max-speed-ms = <300>;
   acceleration-exponent = <1>;
 };
 
@@ -57,7 +57,7 @@
 
 
 &msc {
-  time-to-max-speed-ms = <500>;
+  time-to-max-speed-ms = <800>;
   acceleration-exponent = <0>;
 };
 
@@ -167,7 +167,7 @@
     };
 
     mouse_precise {
-      display-name = "Precisioh Mouse";
+      display-name = "Precision Mouse";
       bindings = <
         &trans &trans &trans &trans &trans &trans  &none                                           &none  &trans &trans &trans &trans  &trans  &trans
         &trans &trans &trans &trans &trans &trans  &none                                           &none  &trans &trans &trans &trans  &trans  &trans
