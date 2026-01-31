@@ -26,6 +26,15 @@
 #define KEYS_R 7 8 9 10 11 12 13 21 22 23 24 25 26 27 39 40 41 42 43 44 45 54 55 56 57 58 59 71 72 73 74 74  // Right-hand keys.
 #define THUMBS 35 36 37 38 65 66 67 68 69 70 52 53  // Thumb keys.
 
+/ {
+    zip_scroll_scaler: zip_scroll_scaler {
+      compatible = "zmk,input-processor-scaler";
+      #input-processor-cells = <2>;
+      type = <INPUT_EV_REL>;
+      codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
+      track-remainders;
+    };
+};
 
 &lt {
   flavor = "balanced";
