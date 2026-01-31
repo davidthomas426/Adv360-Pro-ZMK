@@ -182,9 +182,9 @@
       bindings = <
         &trans &trans &trans &trans   &trans &trans &trans                                           &trans &trans    &trans    &trans    &trans     &trans    &trans
         &trans &trans &trans &trans   &trans &trans &trans                                           &trans &trans    &kp P     &kp MINUS &kp SPACE  &trans    &trans
-        &trans &trans &trans &trans   &trans &trans &trans        &trans &trans &trans &trans        &trans &trans    &kp LGUI  &kp RALT  &kp RSHIFT &trans    &trans
+        &trans &trans &trans &trans   &trans &trans &trans        &trans &trans &trans &trans        &trans &trans    &kp LALT  &kp RGUI  &kp RSHIFT &trans    &trans
         &trans &trans &trans &trans   &trans &trans                      &trans &trans                      &kp SPACE &kp BSLH  &kp SQT   &kp RCTRL  &trans    &trans
-        &trans &trans &trans &kp HOME &kp END              &trans &trans &trans &trans &trans &trans                  &kp PG_UP &kp PG_DN &kp EQUAL
+        &trans &trans &trans &trans   &trans               &trans &trans &trans &trans &trans &trans                  &kp PG_UP &kp PG_DN &kp EQUAL
       >;
     };
 
