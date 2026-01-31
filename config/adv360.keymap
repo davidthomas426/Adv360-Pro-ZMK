@@ -1,5 +1,5 @@
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1250  // default: 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 15    // default: 10
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 18    // default: 10
 
 #include <input/processors.dtsi>
 
@@ -57,14 +57,14 @@
 
 
 &msc {
-  time-to-max-speed-ms = <800>;
+  time-to-max-speed-ms = <600>;
   acceleration-exponent = <0>;
 };
 
 &msc_input_listener {
   precision {
     layers = <5>;
-    input-processors = <&zip_scroll_scaler 1 2>;
+    input-processors = <&zip_scroll_scaler 2 3>;
   };
 };
 
