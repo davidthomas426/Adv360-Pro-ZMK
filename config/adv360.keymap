@@ -1,4 +1,4 @@
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1400  // default: 600
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
 
 #include <input/processors.dtsi>
@@ -51,7 +51,7 @@
 &mmv_input_listener {
   precision {
     layers = <5>;
-    input-processors = <&zip_xy_scaler 1 4>;
+    input-processors = <&zip_xy_scaler 1 3>;
   };
 };
 
@@ -64,7 +64,7 @@
 &msc_input_listener {
   precision {
     layers = <5>;
-    input-processors = <&zip_scroll_scaler 1 4>;
+    input-processors = <&zip_scroll_scaler 1 2>;
   };
 };
 
@@ -121,7 +121,7 @@
         &kp TAB   &kp Q       &kp W         &kp E    &kp R      &kp T  &none                                                                &none      &kp Y  &kp U  &kp I     &kp O    &kp P    &kp BSLH
         &kp ESC   &kp A       &kp S         &kp D    &kp F      &kp G  &tog 4          &kp LCTRL &kp LALT   &kp LGUI  &kp RCTRL             &kp RSHIFT &kp H  &kp J  &kp K     &kp L    &kp SEMI &kp SQT
         &kp LSHFT &kp Z       &kp X         &kp C    &kp V      &kp B                            &kp HOME   &hmr RALT PG_UP                            &kp N  &kp M  &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
-        &mo 2     &lt 1 GRAVE &mt LGUI CAPS &kp LEFT &kp RIGHT              &lt 4 BSPC &lt 4 DEL &lt 5 END  &kp PG_DN &kp ENTER &lt 5 SPACE                   &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
+        &mo 6     &lt 1 GRAVE &mt LGUI CAPS &kp LEFT &kp RIGHT              &lt 4 BSPC &lt 4 DEL &lt 6 END  &kp PG_DN &kp ENTER &lt 6 SPACE                   &kp UP &kp DOWN  &kp LBKT &kp RBKT &mo 2
       >;
     };
     keypad {
@@ -158,11 +158,11 @@
     mouse {
       display-name = "Mouse";
       bindings = <
-        &trans &trans &trans &trans &trans &trans &trans                                           &trans &trans    &trans                  &trans                  &trans          &trans &trans
-        &trans &trans &trans &trans &trans &trans &trans                                           &trans &trans    &msc SCRL_DOWN          &msc SCRL_UP            &mkp MCLK       &trans &trans
-        &trans &trans &trans &trans &trans &trans &trans        &trans &trans &trans &trans        &trans &kp PG_UP &mkp LCLK               &mmv MOVE_UP            &mkp RCLK       &trans &trans
-        &trans &trans &trans &trans &trans &trans                      &trans &trans                      &kp PG_DN &mmv MOVE_LEFT          &mmv MOVE_DOWN          &mmv MOVE_RIGHT &trans &trans
-        &trans &trans &trans &mo 5  &trans               &trans &trans &trans &trans &trans &trans                  &trans                  &trans                  &trans          &trans &trans
+        &trans &trans &trans &trans &trans &trans &trans                                           &trans &trans    &trans          &trans         &trans          &trans &trans
+        &trans &trans &trans &trans &trans &trans &trans                                           &trans &kp BSPC  &msc SCRL_LEFT  &mkp MCLK      &msc SCRL_RIGHT &trans &trans
+        &trans &trans &trans &trans &trans &trans &trans        &trans &trans &trans &trans        &trans &kp PG_UP &mmv MOVE_LEFT  &mmv MOVE_UP   &mmv MOVE_RIGHT &trans &trans
+        &trans &trans &trans &trans &trans &kp BSPC                    &trans &trans                      &kp PG_DN &mkp LCLK       &mmv MOVE_DOWN &mkp RCLK       &trans &trans
+        &trans &trans &trans &mo 5  &kp BSPC             &trans &trans &trans &trans &trans &mkp LCLK               &msc SCRL_UP    &msc SCRL_DOWN &mo 5           &trans &trans
       >;
     };
 
@@ -180,11 +180,11 @@
     ergo {
       display-name = "Ergo";
       bindings = <
-        &trans &trans &trans &trans &trans &trans &trans                                           &trans &trans    &trans    &trans    &trans     &trans  &trans
-        &trans &trans &trans &trans &trans &trans &trans                                           &trans &trans    &kp MINUS &kp LGUI  &kp MINUS  &trans  &trans
-        &trans &trans &trans &trans &trans &trans &trans        &trans &trans &trans &trans        &trans &trans    &kp P     &kp MINUS &kp RSHIFT &trans  &trans
-        &trans &trans &trans &trans &trans &trans                      &trans &trans                      &kp SPACE &kp SQT   &kp BSLH  &kp RSHIFT &trans  &trans
-        &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans                  &kp SPACE &kp LGUI  &kp RALT   &trans  &trans
+        &trans &trans &trans &trans   &trans &trans &trans                                           &trans &trans    &trans    &trans    &trans     &trans    &trans
+        &trans &trans &trans &trans   &trans &trans &trans                                           &trans &trans    &kp P     &kp MINUS &kp SPACE  &trans    &trans
+        &trans &trans &trans &trans   &trans &trans &trans        &trans &trans &trans &trans        &trans &trans    &kp LGUI  &kp RALT  &kp RSHIFT &trans    &trans
+        &trans &trans &trans &trans   &trans &trans                      &trans &trans                      &kp SPACE &kp BSLH  &kp SQT   &kp RCTRL  &trans    &trans
+        &trans &trans &trans &kp HOME &kp END              &trans &trans &trans &trans &trans &trans                  &kp PG_UP &kp PG_DN &kp EQUAL
       >;
     };
 
