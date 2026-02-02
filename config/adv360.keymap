@@ -32,7 +32,7 @@
       #input-processor-cells = <2>;
       type = <INPUT_EV_REL>;
       codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
-      track-remainders;
+      track-remainders; // TODO Try without this to see which feels better
     };
 };
 
@@ -57,14 +57,15 @@
 
 
 &msc {
-  time-to-max-speed-ms = <100>;
+  time-to-max-speed-ms = <0>;
   acceleration-exponent = <0>;
+  trigger-period-ms = <10>;
 };
 
 &msc_input_listener {
   precision {
     layers = <5>;
-    input-processors = <&zip_scroll_scaler 2 3>;
+    input-processors = <&zip_scroll_scaler 1 3>;
   };
 };
 
@@ -158,11 +159,11 @@
     mouse {
       display-name = "Mouse";
       bindings = <
-        &trans &trans &trans &trans &trans &trans &trans                                           &trans &trans    &trans          &trans         &trans          &trans &trans
-        &trans &trans &trans &trans &trans &trans &trans                                           &trans &kp BSPC  &msc SCRL_LEFT  &mkp MCLK      &msc SCRL_RIGHT &trans &trans
-        &trans &trans &trans &trans &trans &trans &trans        &trans &trans &trans &trans        &trans &kp PG_UP &mmv MOVE_LEFT  &mmv MOVE_UP   &mmv MOVE_RIGHT &trans &trans
-        &trans &trans &trans &trans &trans &kp BSPC                    &trans &trans                      &kp PG_DN &mkp LCLK       &mmv MOVE_DOWN &mkp RCLK       &trans &trans
-        &trans &trans &trans &mo 5  &kp BSPC             &trans &trans &trans &trans &trans &mkp LCLK               &msc SCRL_UP    &msc SCRL_DOWN &mo 5           &trans &trans
+        &trans &trans &trans &trans   &trans &trans &trans                                           &trans &trans    &trans          &trans         &trans          &trans &trans
+        &trans &trans &trans &trans   &trans &trans &trans                                           &trans &kp BSPC  &msc SCRL_LEFT  &mkp MCLK      &msc SCRL_RIGHT &trans &trans
+        &trans &trans &trans &trans   &trans &trans &trans      &trans &trans &trans &trans          &trans &kp PG_UP &mmv MOVE_LEFT  &mmv MOVE_UP   &mmv MOVE_RIGHT &trans &trans
+        &trans &trans &trans &kp BSPC &trans &kp BSPC                  &trans &trans                        &kp PG_DN &mkp LCLK       &mmv MOVE_DOWN &mkp RCLK       &trans &trans
+        &trans &trans &trans &mo 5    &kp BSPC           &trans &trans &trans &trans &trans &mkp LCLK                 &msc SCRL_UP    &msc SCRL_DOWN &mo 5           &trans &trans
       >;
     };
 
